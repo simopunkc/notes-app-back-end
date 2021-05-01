@@ -12,6 +12,21 @@
         "ecmaVersion": 12
     },
     "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "no-trailing-spaces": "off",
+        "eol-last": "off",
+        "keyword-spacing": "off",
+        "space-before-blocks": "off",
+        "no-else-return": "off",
+        "max-len": "off",
+        "object-curly-newline": "off",
+        "comma-dangle": "off",
+        "prefer-const": "off",
+        "radix": "off",
+        "no-shadow": "off",
+        "no-param-reassign": "off",
+        "no-tabs": "off",
+        "no-mixed-spaces-and-tabs": "off",
+        "indent": "off"
     }
 }

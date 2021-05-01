@@ -1,86 +1,41 @@
-const { addNoteHandler, getAllNotesHandler, getNoteByIdHandler, editNoteByIdHandler, deleteNoteByIdHandler } = require('./handler');
+const { addBookHandler, getAllBooksHandler, getBookByIdHandler, editBookByIdHandler, deleteBookByIdHandler, error404 } = require('./handler');
+
 const routes = [
-    {
-        method: 'POST',
-        path: '/notes',
-        handler: addNoteHandler,
-    },
-    {
-      method: 'GET',
-      path: '/notes',
-      handler: getAllNotesHandler,
-    },
-    {
-      method: 'GET',
-      path: '/notes/{id}',
-      handler: getNoteByIdHandler,
-    },
-    {
-        method: 'PUT',
-        path: '/notes/{id}',
-        handler: editNoteByIdHandler,
-    },
-    {
-        method: 'DELETE',
-        path: '/notes/{id}',
-        handler: deleteNoteByIdHandler,
-    },
-    {
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            return `Homepage`;
-        },
-    },
-    {
-        method: '*',
-        path: '/',
-        handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method tersebut';
-        },
-    },
-    {
-        method: 'GET',
-        path: '/about',
-        handler: (request, h) => {
-            return 'About page';
-        },
-    },
-    {
-        method: '*',
-        path: '/about',
-        handler: (request, h) => {
-            return 'Halaman tidak dapat diakses dengan method';
-        },
-    },
-    {
-        method: 'GET',
-        path: '/hello/{name?}',
-        handler: (request, h) => {
-            const { name = "stranger" } = request.params;
-            const { lang } = request.query;
-     
-            if(lang === 'id') {
-                return `Hai, ${name}!`;
-            }
-            return `Hello, ${name}!`;
-        },
-    },
-    {
-        method: '*',
-        path: '/{any*}',
-        handler: (request, h) => {
-            return 'Halaman tidak ditemukan';
-        },
-    },
-    {
-        method: 'POST',
-        path: '/login',
-        handler: (request, h) => {
-            const { username, password } = request.payload;
-            return `Welcome ${username}!`;
-        },
-    },
+  {
+	  method: 'POST',
+	  path: '/books',
+	  handler: addBookHandler,
+	},
+	{
+    method: 'GET',
+    path: '/books',
+    handler: getAllBooksHandler,
+	},
+	{
+			method: 'GET',
+			path: '/books/{id}',
+			handler: getBookByIdHandler,
+	},
+	{
+			method: 'PUT',
+			path: '/books/{id}',
+			handler: editBookByIdHandler,
+	},
+	{
+			method: 'DELETE',
+			path: '/books/{id}',
+			handler: deleteBookByIdHandler,
+	},
+	{
+		method: 'GET',
+		path: '/',
+		handler: () => 'Homepage',
+	},
+	{
+		method: '*',
+		path: '/{any*}',
+		handler: error404,
+	},
 ];
- 
+
 module.exports = routes;
